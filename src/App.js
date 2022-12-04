@@ -1,12 +1,16 @@
 import "./App.css";
-import CardWeather from "./components/CardWeather";
-
+import "./components/cardWeather/card-weather.css";
+import CardWeather from "./components/cardWeather/CardWeather";
+import { Container, Row } from "react-bootstrap";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <CardWeather />
-      </header>
+      <Container>
+        <Row className="justify-content-center">
+          <CardWeather />
+          <CardWeather />
+        </Row>
+      </Container>
     </div>
   );
 }
