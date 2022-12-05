@@ -1,14 +1,16 @@
 import "./App.css";
-import "./components/cardWeather/card-weather.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import CardWeather from "./components/cardWeather/CardWeather";
+import SearchBar from "./components/SearchBar";
 import { Container, Row } from "react-bootstrap";
 function App() {
   return (
     <div className="App">
       <Container>
         <Row className="justify-content-center">
+          {/* <SearchBar /> */}
           <CardWeather />
-          <CardWeather />
+          {/* <CardWeather /> */}
         </Row>
       </Container>
     </div>
