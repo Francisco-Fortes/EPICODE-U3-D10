@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./components/notFound/NotFound";
 import Favourites from "./components/favourites/Favourites";
 // import Main from "./components/main/Main";
-import CustomNavBar from "./components/customNavBar/customNavBar";
+// import CustomNavBar from "./components/customNavBar/customNavBar";
 function App() {
   return (
     <BrowserRouter>
@@ -17,7 +17,6 @@ function App() {
         {/* <CustomNavBar /> */}
         <Container>
           <Row className="justify-content-center">
-            {/* <CardWeather /> */}
             <Routes>
               <Route element={<CardWeather />} path="/" />
               <Route element={<Favourites />} path="/favourites" />

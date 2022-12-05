@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
 
   return (
     <Form>
       <Form.Control
         type="search"
-        onChange={(event) => setQuery(event.target.value)}
+        onChange={(event) => setSearch(event.target.value)}
+        onKeyPress={setSearch}
         placeholder="Type the name of a city or town"
       />
     </Form>
