@@ -1,4 +1,8 @@
 .frame {
-  background-color: rgba(71, 66, 66, 0.39);
-  width: 200px;
+  background-color: rgb(18, 115, 194, 0.39);
+  width: 300px;
+}
+
+.card-img-top {
+  height: 200px;
 }

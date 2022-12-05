@@ -1,5 +1,11 @@
+body {
+  height: 100vh;
+  background-color: #0f6c98 !important;
+}
+
 .App {
   text-align: center;
+  background-color: #83e5ee;
 }
 
 .App-logo {
@@ -14,7 +20,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #83e5ee;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

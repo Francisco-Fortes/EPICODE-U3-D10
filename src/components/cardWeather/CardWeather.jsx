@@ -8,7 +8,7 @@ const CardWeather = () => {
   const key = "278f10ca700a0126316d3fcef6dcd77b";
   //   "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=278f10ca700a0126316d3fcef6dcd77b"
   const [currentWeather, setCurrentWeather] = useState([]);
-  const [search, setSearch] = useState("Santa Cruz de Tenerife");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetchWeather();
@@ -50,8 +50,8 @@ const CardWeather = () => {
   // };
 
   return (
-    <Col md={6} xs={2} lg={2} xl={2}>
-      <Form onSubmit={handleSubmit}>
+    <Col xs={10} sm={8} md={6} lg={6} xl={6}>
+      <Form onSubmit={handleSubmit} className="mt-4 mb-3">
         <Form.Control
           type="search"
           onChange={handleChange}
@@ -60,64 +60,66 @@ const CardWeather = () => {
           placeholder="Type the name of a city or town"
         />
       </Form>
-      <Card className="frame">
-        <Card.Img
-          variant="top"
-          // `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`
-          src={`https://source.unsplash.com/200x200/?${currentWeather.name}`}
-          // src={`https://source.unsplash.com/200x200/?${currentWeather.name}`}
-          alt={`${currentWeather.name}-image`}
-        />
-        <Card.Body>
-          <Card.Title>
-            {currentWeather.name},
-            <>
-              {currentWeather.sys ? (
-                <span>{currentWeather.sys.country}</span>
-              ) : null}
-            </>
-          </Card.Title>
-          <Card.Text>
-            <>
-              {currentWeather.main ? (
-                <span>
-                  {convertKelvinToCelsius(currentWeather.main.temp)}°C
-                </span>
-              ) : null}
-            </>
-            <>
-              {currentWeather.main ? (
-                <span>
-                  {convertKelvinToCelsius(currentWeather.main.temp_max)}°C
-                </span>
-              ) : null}
-            </>
-            <>
-              {currentWeather.main ? (
-                <span>
-                  {convertKelvinToCelsius(currentWeather.main.temp_min)}°C
-                </span>
-              ) : null}
-            </>
-            <>
-              {currentWeather.main ? (
-                <span>{currentWeather.weather[0].main}</span>
-              ) : null}
-            </>
-            <>
-              {currentWeather.wind ? (
-                <span>{currentWeather.wind.speed}m/s</span>
-              ) : null}
-            </>
-            <>
-              {currentWeather.main ? (
-                <span>{currentWeather.main.humidity}%</span>
-              ) : null}
-            </>
-          </Card.Text>
-          <Button variant="danger">Delete</Button>
-        </Card.Body>
-      </Card>
+      {currentWeather.name !== undefined && (
+        <Card className="frame mx-auto mb-5">
+          <Card.Img
+            variant="top"
+            // `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`
+            src={`https://source.unsplash.com/200x200/?${currentWeather.name}`}
+            // src={`https://source.unsplash.com/200x200/?${currentWeather.name}`}
+            alt={`${currentWeather.name}-image`}
+          />
+          <Card.Body>
+            <Card.Title>
+              {currentWeather.name},
+              <>
+                {currentWeather.sys ? (
+                  <span>{currentWeather.sys.country}</span>
+                ) : null}
+              </>
+            </Card.Title>
+            <Card.Text>
+              <>
+                {currentWeather.main ? (
+                  <span>
+                    {convertKelvinToCelsius(currentWeather.main.temp)}°C
+                  </span>
+                ) : null}
+              </>
+              <>
+                {currentWeather.main ? (
+                  <span>
+                    {convertKelvinToCelsius(currentWeather.main.temp_max)}°C
+                  </span>
+                ) : null}
+              </>
+              <>
+                {currentWeather.main ? (
+                  <span>
+                    {convertKelvinToCelsius(currentWeather.main.temp_min)}°C
+                  </span>
+                ) : null}
+              </>
+              <>
+                {currentWeather.main ? (
+                  <span>{currentWeather.weather[0].main}</span>
+                ) : null}
+              </>
+              <>
+                {currentWeather.wind ? (
+                  <span>{currentWeather.wind.speed}m/s</span>
+                ) : null}
+              </>
+              <>
+                {currentWeather.main ? (
+                  <span>{currentWeather.main.humidity}%</span>
+                ) : null}
+              </>
+            </Card.Text>
+            {/* <Button variant="danger">Delete</Button> */}
+          </Card.Body>
+        </Card>
+      )}
     </Col>
   );
 };
