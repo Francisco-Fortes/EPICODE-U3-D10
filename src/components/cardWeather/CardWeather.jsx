@@ -1,10 +1,10 @@
-import { Button, Card, Col, Form } from "react-bootstrap";
+import { Button, Card, Col, Form, Container, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import "./card-weather.css";
 
 const CardWeather = () => {
   //   const baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-  const city = "Santa Cruz de Tenerife";
+  // const city = "Santa Cruz de Tenerife";
   const key = "278f10ca700a0126316d3fcef6dcd77b";
   //   "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=278f10ca700a0126316d3fcef6dcd77b"
   const [currentWeather, setCurrentWeather] = useState([]);
@@ -79,42 +79,64 @@ const CardWeather = () => {
               </>
             </Card.Title>
             <Card.Text>
-              <>
-                {currentWeather.main ? (
-                  <span>
-                    {convertKelvinToCelsius(currentWeather.main.temp)}°C
-                  </span>
-                ) : null}
-              </>
-              <>
-                {currentWeather.main ? (
-                  <span>
-                    {convertKelvinToCelsius(currentWeather.main.temp_max)}°C
-                  </span>
-                ) : null}
-              </>
-              <>
-                {currentWeather.main ? (
-                  <span>
-                    {convertKelvinToCelsius(currentWeather.main.temp_min)}°C
-                  </span>
-                ) : null}
-              </>
-              <>
-                {currentWeather.main ? (
-                  <span>{currentWeather.weather[0].main}</span>
-                ) : null}
-              </>
-              <>
-                {currentWeather.wind ? (
-                  <span>{currentWeather.wind.speed}m/s</span>
-                ) : null}
-              </>
-              <>
-                {currentWeather.main ? (
-                  <span>{currentWeather.main.humidity}%</span>
-                ) : null}
-              </>
+              <p>Details</p>
+              <Container>
+                <Row className="align-items-start">
+                  <Col md={5}>
+                    {currentWeather.main ? (
+                      <span>{currentWeather.weather[0].main}</span>
+                    ) : null}
+
+                    <Card.Img
+                      src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+                      alt={`${currentWeather.weather[0].main}-icon`}
+                    />
+                  </Col>
+                  <Col md={7}>
+                    <>
+                      {currentWeather.main ? (
+                        <span>
+                          {convertKelvinToCelsius(currentWeather.main.temp)}°C
+                        </span>
+                      ) : null}
+                    </>
+                    <>
+                      <br />
+                      {currentWeather.main ? (
+                        <span>
+                          Max:{" "}
+                          {convertKelvinToCelsius(currentWeather.main.temp_max)}
+                          °C
+                        </span>
+                      ) : null}
+                    </>
+                    <>
+                      <br />
+                      {currentWeather.main ? (
+                        <span>
+                          Min:{" "}
+                          {convertKelvinToCelsius(currentWeather.main.temp_min)}
+                          °C
+                        </span>
+                      ) : null}
+                    </>
+                    <>
+                      <br />
+                      Wind:{" "}
+                      {currentWeather.wind ? (
+                        <span>{currentWeather.wind.speed}m/s</span>
+                      ) : null}
+                    </>
+                    <>
+                      <br />
+                      Humidity:{" "}
+                      {currentWeather.main ? (
+                        <span>{currentWeather.main.humidity}%</span>
+                      ) : null}
+                    </>
+                  </Col>
+                </Row>
+              </Container>
             </Card.Text>
             {/* <Button variant="danger">Delete</Button> */}
           </Card.Body>
